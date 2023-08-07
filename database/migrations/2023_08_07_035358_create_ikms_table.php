@@ -30,7 +30,7 @@ class CreateIkmsTable extends Migration
             $table->string('soal_8');
             $table->string('soal_9');
             $table->string('soal_10');
-            $table->string('komentar');
+            $table->string('komentar')->default(null);
             $table->timestamps();
         });
     }
