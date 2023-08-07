@@ -18,7 +18,7 @@ class CreateIkmsTable extends Migration
             $table->string('nama');
             $table->string('no_tlp');
             $table->enum('jenis_kelamin', ['L', 'P'])->default('L');
-            $table->string('penidikan');
+            $table->string('pendidikan');
             $table->string('pekerjaan');
             $table->string('soal_1');
             $table->string('soal_2');
