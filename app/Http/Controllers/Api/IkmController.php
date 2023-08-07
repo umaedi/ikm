@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Services\IkmService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Response as Controller;
 use Illuminate\Support\Facades\Validator;
 
 class IkmController extends Controller
@@ -23,7 +23,7 @@ class IkmController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['status_code' => 404, 'data' => $validator]);
+            return $this->sendResponseError($validator->errors());
         }
 
         $data = $request->except('_token');
@@ -33,10 +33,10 @@ class IkmController extends Controller
             $this->IkmService->store($data);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json(['status_code' => 404, 'data' => $th]);
+            return $this->sendResponseError($th);
         }
 
         DB::commit();
-        return response()->json(['status_code' => 200, 'data' => $data]);
+        return $this->sendResponseCreate($data);
     }
 }
