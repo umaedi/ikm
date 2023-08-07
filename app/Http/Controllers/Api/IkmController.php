@@ -23,7 +23,7 @@ class IkmController extends Controller
             $this->IkmService->store($data);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json($th);
+            return response()->json(['status_code' => 404, 'data' => $th]);
         }
 
         DB::commit();

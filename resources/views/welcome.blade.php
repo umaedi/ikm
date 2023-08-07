@@ -107,8 +107,8 @@
                     <div class="form-group">
                         <label for="jenis_kelamin">Jenis Kelamin</label>
                         <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-                            <option value="laki-laki">Laki-Laki</option>
-                            <option value="perempuan">Perempuan</option>
+                            <option value="l">Laki-Laki</option>
+                            <option value="p">Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group">
