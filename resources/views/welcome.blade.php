@@ -475,8 +475,11 @@
                 'contentType': false,
                 'cache': false,
                 success(res) {
-                    console.log(res);
-                    localStorage.setItem('ikm', 'yes');
+                    if(res.status_code == 200) {
+                        localStorage.setItem('ikm', 'yes');
+                    }else {
+                        console.log(res.data.errorInfo);
+                    }
                 },
                 error(err) {
                     console.log(err)
