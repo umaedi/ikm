@@ -15,6 +15,7 @@ class IkmController extends Controller
     {
         $this->IkmService = new IkmService();
     }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -35,7 +36,6 @@ class IkmController extends Controller
             DB::rollBack();
             return $this->sendResponseError($th);
         }
-
         DB::commit();
         return $this->sendResponseCreate($data);
     }
