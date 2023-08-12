@@ -18,7 +18,8 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profile.index');
+        $data['title'] = 'Profile';
+        return view('profile.index', $data);
     }
 
     public function update(Request $request, $id)

@@ -1,20 +1,4 @@
 @extends('layouts.app')
-@push('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css"  />
-<style>
-     img {
-            display: block;
-            max-width: 100%;
-        }
-        .preview {
-            overflow: hidden;
-            width: 160px; 
-            height: 160px;
-            margin: 10px;
-            border: 1px solid red;
-        }
-</style>
-@endpush
 @section('content')
 <div class="main-content">
     <section class="section">
@@ -26,7 +10,7 @@
             <div class="col-md-3">
               <div class="card">
                 <div class="card-body">
-                  <img src="{{ auth()->user()->img }}" alt="photo" width="100%" >
+                  <img src="{{ \Illuminate\Support\Facades\Storage::url(auth()->user()->img) }}" alt="photo" width="100%" >
                 </div>
               </div>
             </div>
@@ -96,7 +80,6 @@
 @endsection
 @push('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" async=""></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 <script src="{{ asset('js') }}/sweetalert.min.js"></script>
 <script type="text/javascript">
     $('#update-data').submit(async function update(e) {
@@ -134,63 +117,6 @@
                 $('.x-btn').removeClass('d-none');
             }
         }  
-    });
-
-    var bs_modal = $('#modal');
-    var image = document.getElementById('image');
-    var cropper,reader,file;
-   
-
-    $("body").on("change", ".image", function(e) {
-        var files = e.target.files;
-        var done = function(url) {
-            image.src = url;
-            bs_modal.modal('show');
-        };
-
-
-        if (files && files.length > 0) {
-            file = files[0];
-
-            if (URL) {
-                done(URL.createObjectURL(file));
-            } else if (FileReader) {
-                reader = new FileReader();
-                reader.onload = function(e) {
-                    done(reader.result);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    });
-
-    bs_modal.on('shown.bs.modal', function() {
-        cropper = new Cropper(image, {
-            aspectRatio: 1,
-            viewMode: 3,
-            preview: '.preview'
-        });
-    }).on('hidden.bs.modal', function() {
-        cropper.destroy();
-        cropper = null;
-    });
-
-    $("#crop").click(function() {
-        canvas = cropper.getCroppedCanvas({
-            width: 160,
-            height: 160,
-        });
-
-        canvas.toBlob(function(blob) {
-            url = URL.createObjectURL(blob);
-            var reader = new FileReader();
-            reader.readAsDataURL(blob);
-            reader.onloadend = function() {
-            var base64data = reader.result;
-            bs_modal.modal('hide');
-            document.getElementById('newImage').value = base64data;
-            };
-        });
-    });
+    }); 
 </script>
 @endpush

@@ -34,7 +34,7 @@
                 <h4>Quisioner</h4>
               </div>
               <div class="card-body">
-                {{ $responden }}
+                10
               </div>
             </div>
           </div>
