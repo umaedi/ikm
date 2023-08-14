@@ -12,8 +12,8 @@
       <div class="card">
         <div class="card-body">
             <div class="section-body">
-                <div class="row mb-3">
-                    <div class="col-md-10 mb-3">
+                <div class="row">
+                    <div class="col-md-8 mb-3">
                         <input type="text" class="form-control" id="search" name="search" placeholder="Cari berdasarkan nama...">
                     </div>
                     <div class="col-md-2 mb-3">
@@ -24,9 +24,9 @@
                             <option value="100">100</option>
                         </select>
                     </div>
-                    {{-- <div class="col-md-2">
-                        <a href="/admin/export?status=Semua_Pendaftar" class="form-control btn btn-primary">EXPORT</a>
-                    </div> --}}
+                    <div class="col-md-2">
+                        <a href="/export" class="btn btn-primary btn-block">EXPORT</a>
+                    </div>
                   </div>
                   @include('layouts._loading')
                 <div class="table-responsive" id="x-data-table">

@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/responden', [RespondenController::class, 'index']);
     Route::get('/responden/show/{id}', [RespondenController::class, 'show']);
+    Route::get('/export', [RespondenController::class, 'export']);
 
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::put('/profile/update/{id}', [ProfileController::class, 'update']);

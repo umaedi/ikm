@@ -51,4 +51,9 @@ class RespondenController extends Controller
         DB::commit();
         return $this->sendResponseDelete($id);
     }
+
+    public function export()
+    {
+        dd('ok');
+    }
 }
