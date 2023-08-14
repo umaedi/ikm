@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.4.3.1.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset('css') }}/style.css">
+  <link rel="icon" type="image/png" href="img/favicon.png" sizes="32x32">
 </head>
 
 <body>
@@ -17,9 +18,6 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 mt-5">
-            @if (session()->has('error'))
-            <div class="alert alert-warning">{{ session('error') }}</div>
-            @endif
             <div class="card">
               <img src="{{ asset('img') }}/logo/logo.jpg" alt="logo" class="rounded-top">
               <div class="card-body">
